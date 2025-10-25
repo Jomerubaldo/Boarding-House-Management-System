@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { useState } from 'react';
 
 export default function Dashboard() {
@@ -8,6 +9,16 @@ export default function Dashboard() {
   const totalRooms = 7;
   const occupied = boarders.length;
   const available = totalRooms - occupied;
+
+  // Pop up modal if room is full
+  // With sweetalert2 library
+  if (available === 0) {
+    Swal.fire({
+      title: 'Room is Full!',
+      text: 'You can add if room is available.',
+      icon: 'warning',
+    });
+  }
 
   //Modal Box
   const [showModal, setShowModal] = useState(false);
